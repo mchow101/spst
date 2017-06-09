@@ -14,7 +14,7 @@ height=600
 display = pygame.display.set_mode((width,height),RESIZABLE)
 def button(x,y,lengthX,lengthY,text,rect,textX,textY,textSize=4.0,color=(0,0,0)):
     pos = pygame.mouse.get_pos()
-    picture='None'
+    picture=None
     if x+lengthX> pos[0] > x and y+lengthY> pos[1] > y:
         if type(rect)==tuple:
             if rect[0]<246:
@@ -175,10 +175,10 @@ def compare_stuff():
     lines = []
     colors = []
     names=[]
-    print 'Put END as the disease to stop'
+    print 'Put bob as the disease to stop'
     while True:
         namee = raw_input("Enter in the disease: ")
-        if namee=='END':
+        if namee=='bob':
             break
         names.append(namee)
         lines.append(object_creater(names[len(names)-1]))
@@ -250,6 +250,12 @@ def future():
         pygame.display.update()
         if not running2 and running:
             running2=False
+def music(s):
+    pygame.mixer.music.load(s)
+    pygame.mixer.music.play(-1,0.0)
+    pygame.mixer.music.set_volume(1)
+music('Nature_Sounds.mp3')
+paused=False
 nameFile = open('text.txt','r')
 xs,ys = create_dataset(40,20,2,True)
 graph = line(xs,ys)
@@ -258,8 +264,8 @@ nameFile.close()
 icon = pygame.image.load("Earth.jpg")
 pygame.display.set_caption("Disease Data Analasis")
 pygame.display.set_icon(icon)
-
 year=0.0
+
 while True:
     display.fill((255,255,255))
     for event in pygame.event.get():
@@ -281,6 +287,13 @@ while True:
         file.close()
     if button(width/2-200,height/2-125,50,50,'',(0,0,255),0,0):
         input_name()
+    if button(width/2-200,height/2 - 60,50,50,'||',(0,0,255),width/2-180,height/2-45):
+        if paused:
+            paused=False
+            pygame.mixer.music.unpause()
+        else:
+            paused=True
+            pygame.mixer.music.pause()
     mic = pygame.image.load('mic.png')
     mic = pygame.transform.scale(mic, (50,50))
     display.blit(mic,(width/2-200,height/2-125))
