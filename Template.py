@@ -14,7 +14,7 @@ height=600
 display = pygame.display.set_mode((width,height),RESIZABLE)
 def button(x,y,lengthX,lengthY,text,rect,textX,textY,textSize=4.0,color=(0,0,0)):
     pos = pygame.mouse.get_pos()
-    picture='bob'
+    picture='None'
     if x+lengthX> pos[0] > x and y+lengthY> pos[1] > y:
         if type(rect)==tuple:
             if rect[0]<246:
@@ -175,10 +175,10 @@ def compare_stuff():
     lines = []
     colors = []
     names=[]
-    print 'Put bob as the disease to stop'
+    print 'Put END as the disease to stop'
     while True:
         namee = raw_input("Enter in the disease: ")
-        if namee=='bob':
+        if namee=='END':
             break
         names.append(namee)
         lines.append(object_creater(names[len(names)-1]))
