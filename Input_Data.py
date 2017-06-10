@@ -1,6 +1,6 @@
 __author__ = 'Bhagat'
 def input_data():
-    nameFile = open('text.txt','r')
+    nameFile = open('D:\MyPrograms\spst-master\spst-master\\text.txt','r')
     name = nameFile.read()
     nameFile.close()
     print 'Enter the year as -1 to stop'
@@ -43,12 +43,12 @@ def input_data():
             ys[u]=int(num_of_people)
         else:
             ys.append(int(num_of_people))
-    file = open('text.txt','w')
+    file = open('D:\MyPrograms\spst-master\spst-master\\text.txt','w')
     file.write(name)
     file.close()
-    file = open(name+'xs.txt','w')
+    file = open('D:\MyPrograms\spst-master\spst-master\\'+name+'xs.txt','w')
     file.write(str(xs))
     file.close()
-    file = open(name+'ys.txt','w')
+    file = open('D:\MyPrograms\spst-master\spst-master\\'+name+'ys.txt','w')
     file.write(str(ys))
     file.close()
