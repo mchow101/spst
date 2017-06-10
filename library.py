@@ -1,6 +1,5 @@
 __author__ = 'Bhagat'
 import random
-import pygame
 def mean(x):
     avr=0
     for y in x:
