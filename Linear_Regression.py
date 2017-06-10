@@ -1,9 +1,7 @@
 __author__ = 'Bhagat'
 
-import numpy as np
 import matplotlib.pyplot as plt
-import random
-from library import mean, create_dataset, product, square, subtract
+from library import mean, product, square, subtract
 
 class line:
     def __init__(self, xs, ys,predict_x=0.0):
@@ -71,5 +69,3 @@ class line:
 # xs, ys = create_dataset(40,15,2,True)
 # graph = line(xs,ys)
 # graph.graph()
-
-
