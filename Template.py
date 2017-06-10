@@ -109,11 +109,11 @@ def graph_section(graphq=True):
     display.fill((0,0,0))
     global year
     global graph
-    file = open('text.txt','r')
+    file = open('D:\MyPrograms\spst-master\spst-master\\text.txt','r')
     name = file.read()
     file.close()
     try:
-        xsss = open(name+'xs.txt','r')
+        xsss = open('D:\MyPrograms\spst-master\spst-master\\'+name+'xs.txt','r')
         xss=xsss.read()
         if xss=='[]' or xss=='':
             raise IOError
@@ -123,7 +123,7 @@ def graph_section(graphq=True):
         time.sleep(3)
         return None
     xs=[]
-    ysss = open(name+'ys.txt','r')
+    ysss = open('D:\MyPrograms\spst-master\spst-master\\'+name+'ys.txt','r')
     yss = ysss.read()
     ys=[]
     start = 0
@@ -157,7 +157,7 @@ def input_name():
     speech.say("Say the name")
     name = speech.input('')
     speech.stoplistening()
-    file = open('text.txt','w')
+    file = open('D:\MyPrograms\spst-master\spst-master\\text.txt','w')
     file.write(name)
     file.close()
 def predict():
@@ -175,10 +175,10 @@ def compare_stuff():
     lines = []
     colors = []
     names=[]
-    print 'Put bob as the disease to stop'
+    print 'Put Quit as the disease to stop'
     while True:
         namee = raw_input("Enter in the disease: ")
-        if namee=='bob':
+        if namee=='Quit':
             break
         names.append(namee)
         lines.append(object_creater(names[len(names)-1]))
@@ -186,7 +186,7 @@ def compare_stuff():
     compare(lines,colors)
 def object_creater(name):
     try:
-        xsss = open(name+'xs.txt','r')
+        xsss = open('D:\MyPrograms\spst-master\spst-master\\'+name+'xs.txt','r')
         xss=xsss.read()
         if xss=='[]' or xss=='':
             raise IOError
@@ -196,7 +196,7 @@ def object_creater(name):
         time.sleep(3)
         return None
     xs = []
-    ysss = open(name+'ys.txt','r')
+    ysss = open('D:\MyPrograms\spst-master\spst-master\\'+name+'ys.txt','r')
     yss = ysss.read()
     ys=[]
     start = 0
@@ -245,7 +245,7 @@ def future():
         elif m<-10:
             messageOnScreen(name+' is getting better. Less people are getting affected by it as time goes on.',10,10,(0,0,0),3)
         else:
-            messageOnScreen(name+' isn\'t really getting better or worse, it is staying about the same',10,10,(0,0,0),3)
+            messageOnScreen(name+' is not really getting better or worse, it is staying about the same',10,10,(0,0,0),3)
         messageOnScreen('This data is '+str(r_squared*100)+' percent accurate',30,70,(0,0,0),size=2.7)
         pygame.display.update()
         if not running2 and running:
@@ -254,16 +254,16 @@ def music(s):
     pygame.mixer.music.load(s)
     pygame.mixer.music.play(-1,0.0)
     pygame.mixer.music.set_volume(1)
-music('Nature_Sounds.mp3')
+music('D:\\MyPrograms\\spst-master\\spst-master\\Nature_Sounds.mp3')
 paused=False
-nameFile = open('text.txt','r')
+nameFile = open('D:\\MyPrograms\\spst-master\\spst-master\\text.txt','r')
 xs,ys = create_dataset(40,20,2,True)
 graph = line(xs,ys)
 name = nameFile.read()
 nameFile.close()
-icon = pygame.image.load("Earth.jpg")
-pygame.display.set_caption("Disease Data Analasis")
-pygame.display.set_icon(icon)
+#icon = pygame.image.load("D:\\MyPrograms\\spst-master\\spst-master\\Earth.jpg")
+pygame.display.set_caption("D:\\MyPrograms\\spst-master\\spst-master\\Disease Data Analysis")
+#pygame.display.set_icon(icon)
 year=0.0
 
 while True:
@@ -282,7 +282,7 @@ while True:
                 pygame.quit()
     if button(width/2-150,height/2-125,3000,50,name,(255,255,255),width/2-130,height/2-110,color=(0,0,255)):
         name = screen_type(width/2-130,height/2-110,but=True)
-        file = open('text.txt' , 'w')
+        file = open('D:\\MyPrograms\\spst-master\\spst-master\\text.txt' , 'w')
         file.write(name)
         file.close()
     if button(width/2-200,height/2-125,50,50,'',(0,0,255),0,0):
@@ -294,9 +294,9 @@ while True:
         else:
             paused=True
             pygame.mixer.music.pause()
-    mic = pygame.image.load('mic.png')
-    mic = pygame.transform.scale(mic, (50,50))
-    display.blit(mic,(width/2-200,height/2-125))
+    #mic = pygame.image.load('D:\\MyPrograms\\spst-master\\spst-master\\mic.png')
+    #mic = pygame.transform.scale(mic, (50,50))
+    #display.blit(mic,(width/2-200,height/2-125))
     if button(width/2-100,height/2-70,200,50,"Best-Fit-Graph",(0,255,0),width/2-100, height/2-55):
         graph_section()
     if button(width/2-100,height/2-10,200,50,'Compare Diseases',(0,255,0),width/2-90,height/2+5,textSize=3.0):
@@ -305,8 +305,8 @@ while True:
         input_data()
     if button(width/2-100,height/2+230,200,50,"Delete Data",(255,0,0),width/2-80, height/2+245):
         try:
-            os.remove(name+'xs.txt')
-            os.remove(name+'ys.txt')
+            os.remove('D:\\MyPrograms\\spst-master\\spst-master\\'+name+'xs.txt')
+            os.remove('D:\\MyPrograms\\spst-master\\spst-master\\'+name+'ys.txt')
         except WindowsError:
             pass
     if button(width/2-100,height/2+110,200,50,"How is the future?",(255,0,0),width/2-80, height/2+125,textSize=3.0):
